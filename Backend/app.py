@@ -123,7 +123,7 @@ def avg_salary():
             data = cursor.fetchall()
 
             # Converte os resultados em uma lista de dicionários
-            results = [{'cargo':row[0], 'media': row[1]} for row in data]
+            results = [{'cargo':row[0], 'media': f"{row[1]:.2f}"} for row in data]
 
         # Retorna o resultado para o endpoint
         return jsonify(results), 200
@@ -132,8 +132,8 @@ def avg_salary():
         return jsonify({'error': str(e)}), 400
     
 
-@app.route("/salaries_employees", methods=['GET'])
-def salaries_employees():
+@app.route("/highest_per_role", methods=['GET'])
+def highest_per_role():
     """
         Identifica os funcionários com os maiores salários por cargo.
         - Retorna uma lista JSON com os campos nome, cargo e salário.
