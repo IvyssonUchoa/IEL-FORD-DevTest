@@ -1,0 +1,25 @@
+.highest-per-role-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.highest-per-role-legend {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.highest-per-role-legend li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.highest-per-role-legend span.color-box {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 4px;
+}

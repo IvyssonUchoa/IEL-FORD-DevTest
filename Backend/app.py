@@ -153,7 +153,7 @@ def highest_per_role():
                     ) AS 'data'
                     LEFT JOIN workers ON workers.salario = data.salario
                         AND workers.cargo = data.cargo
-                ORDER BY workers.salario DESC;
+                ORDER BY workers.salario DESC, workers.nome;
                 """
             )
             data = cursor.fetchall()

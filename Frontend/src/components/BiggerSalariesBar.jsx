@@ -14,28 +14,28 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, ChartDataLabels);
 
-export function AvgsalaryBar(){
-    const [avgsalary, setAvgSalary] = useState([]);
+export function BiggerSalariesBar(){
+    const [topSalary, setTopSalary] = useState([]);
 
     useEffect(()=> {
         // Faz requisição na API 
-        axios.get('http://localhost:5000/avg_salary')
-        .then(response => setAvgSalary(response.data))
+        axios.get('http://localhost:5000/bigger_salaries')
+        .then(response => setTopSalary(response.data))
         .catch(error => console.error('Error:',error));
     }, [])
 
     // Prepara os dados para a biblioteca de gráfico
-    const listWork = avgsalary.map(item => item.cargo);
-    const dataValues = avgsalary.map(item => item.media);
+    const workers = topSalary.map(item => item.nome);
+    const dataValues = topSalary.map(item => item.salario);
 
     // Organiza os dados da requisição
     const data = {
-        labels: listWork,
+        labels: workers,
         datasets: [{
-            label: "Média Salarial",
+            label: "Salário",
             data: dataValues,
             backgroundColor: [
-              "#1E88Ef", "#2196F3", "#42A5F5", 
+              "#1E88FF", "#2196F3", "#42A5F5", 
               "#64B5F6", "#72A0C1",  "#72A0CF",  
               "#82B1FF",  "#90CAF9", "#A0C4FF", 
               "#B3D1FF",  "#BBDEFB", "#D0E7FF", 
@@ -49,7 +49,7 @@ export function AvgsalaryBar(){
           display: true
         },
         title: {
-          text: 'Média Salarial por Cargo',
+          text: 'Top 5 Maiores Salários',
         }
       };
 

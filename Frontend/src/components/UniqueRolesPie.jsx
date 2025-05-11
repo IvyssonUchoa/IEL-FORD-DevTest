@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { Bar } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Tooltip,
-  } from 'chart.js';
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, ChartDataLabels);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function UniqueRolesBar(){
+export function UniqueRolesPie(){
     const [roles, setRoles] = useState([]);
 
     useEffect(()=> {
@@ -25,30 +24,44 @@ export function UniqueRolesBar(){
     }, [])
 
     // Prepara os dados para a biblioteca de gráfico
-    const listCargo = roles.map(item => item.cargo);
+    const listWorks = roles.map(item => item.cargo);
     const dataValues = roles.map(item => item.quant);
 
     // Organiza os dados da requisição
     const data = {
-        labels: listCargo,
+        labels: listWorks,
         datasets: [{
             label: "Quantidade Funcionários",
-            data: dataValues
+            data: dataValues,
+            backgroundColor: [
+              "#FF6384", 
+              "#36A2EB", 
+              "#FFCE56",
+              "#4BC0C0", 
+              "#9966FF", 
+              "#FF9F40",
+              "#8AFFC1", 
+              "#FF6F91", 
+              "#D4A5A5",
+              "#A0C4FF", 
+              "#BDB2FF", 
+              "#FFADAD"
+            ],
         },]
     };
 
     // Configura o Gráfico
     const options = {
-        datalabels: {
-          display: true
-        },
-        title: {
-          text: 'Funcionários por Cargo',
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'left'
         }
-      };
+      }
+    };
 
     // Retorna um gráfico de barras com os dados da requisição
     return (
-        <Bar data={data} options={options}/>
+        <Pie data={data} options={options}/>
     )
 }
