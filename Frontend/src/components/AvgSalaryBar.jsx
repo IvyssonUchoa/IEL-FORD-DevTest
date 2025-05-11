@@ -28,6 +28,8 @@ export function AvgsalaryBar(){
     const listWork = avgsalary.map(item => item.cargo);
     const dataValues = avgsalary.map(item => item.media);
 
+    const maxValue = parseInt(Math.max(...dataValues) * 1.10); // Calcula o valor máximo para o eixo Y
+
     // Organiza os dados da requisição
     const data = {
         labels: listWork,
@@ -43,12 +45,25 @@ export function AvgsalaryBar(){
         },]
     };
 
-    // Configura o Gráfico
+    // Configurações do Gráfico
     const options = {
+      plugins: {
         datalabels: {
-          display: true
+            display: true,
+            anchor: 'end',
+            align: 'end', 
+            font: {
+              size: 12 // Ajusta o tamanho da fonte
+            },
         },
-        title: {
+      },
+      scales: {
+        y: {
+            beginAtZero: true, 
+            max: maxValue, // Ajusta o valor do eixo Y conforme o maior valor
+        },
+      },
+      title: {
           text: 'Média Salarial por Cargo',
         }
       };

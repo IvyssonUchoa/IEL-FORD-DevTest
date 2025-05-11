@@ -30,15 +30,15 @@ export function LowerSalariesBar(){
 
     // Organiza os dados da requisição
     const data = {
-        labels: workers,
+        labels: workers.reverse(),
         datasets: [{
             label: "Salário",
-            data: dataValues,
+            data: dataValues.reverse(),
             backgroundColor: [
-              "#1E88FF", "#2196F3", "#42A5F5", 
-              "#64B5F6", "#72A0C1",  "#72A0CF",  
               "#82B1FF",  "#90CAF9", "#A0C4FF", 
               "#B3D1FF",  "#BBDEFB", "#D0E7FF", 
+              "#1E88FF", "#2196F3", "#42A5F5", 
+              "#64B5F6", "#72A0C1",  "#72A0CF",  
             ],
         },]
     };

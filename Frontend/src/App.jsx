@@ -16,7 +16,7 @@ function App() {
         </header>
 
         {/* Renderização dos gráficos */}
-        <div className="grid-container">
+        <div className='grid-3-container'>
           <section>
             <h3>Acompanhamento de Cargos Existentes</h3>
             <div className="small-chart">
@@ -24,11 +24,16 @@ function App() {
             </div>
           </section>
           
-          <section>
-            <h3>Valor Médio do Salário por Cargo</h3>
-            <AvgsalaryBar />
-          </section>
+          <div className='full-width'>
+            <section>
+              <h3>Valor Médio do Salário por Cargo</h3>
+              <AvgsalaryBar />
+            </section>
+          </div>
+          
+        </div>
 
+        <div className="grid-2-container">
           <section>
             <h3>5 Maiores Salários</h3>
             <BiggerSalariesBar />
@@ -38,12 +43,14 @@ function App() {
             <h3>5 Menores Salários</h3>
             <LowerSalariesBar />
           </section>
+
           <div className="full-width">
             <section >
               <h3>Maiores Salários de Funcionários por Função</h3>
               <HighestPerRoleBar />
             </section>
           </div>
+
         </div>
 
         {/* Rodapé do Dashboard */}

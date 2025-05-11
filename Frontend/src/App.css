@@ -41,7 +41,6 @@ body {
   color: #f4d03f;
 }
 
-
 section {
   border: 1px solid #ddd;
   padding: 20px;
@@ -50,11 +49,20 @@ section {
   border-radius: 8px;
 }
 
-.grid-container {
+.grid-2-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
+  margin: 0%;
+}
+
+.grid-3-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin: 0%;
 }
 
 h3 {
@@ -63,10 +71,12 @@ h3 {
 }
 
 .small-chart {
-  max-height: 500px;
+  max-height: 450px;
   display: flex;
   justify-content: center; 
   align-items: center; 
+  margin: 0%;
+  padding: 0%;
 }
 
 .full-width {
@@ -76,7 +86,12 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  .grid-container {
+  .grid-2-container {
+    grid-template-columns: 1fr; 
+    gap: 15px; 
+  }
+
+  .grid-3-container {
     grid-template-columns: 1fr; 
     gap: 15px; 
   }
