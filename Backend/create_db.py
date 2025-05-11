@@ -1,3 +1,7 @@
+"""
+Crie e alimenta o banco de dados SQLite com dados fictícios.
+Execute esse script caso o arquivo de banco de dados não exista no diretório "./Backend/db".
+"""
 import sqlite3
 
 # Crie e conecta-se ao banco de dados
